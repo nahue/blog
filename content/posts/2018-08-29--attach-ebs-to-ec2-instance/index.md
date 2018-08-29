@@ -2,6 +2,7 @@
 title: "Attach a EBS disk to a EC2 instance"
 subTitle: "Without rebooting the server"
 category: 'linux'
+cover: ec2.png
 ---
 
 ```

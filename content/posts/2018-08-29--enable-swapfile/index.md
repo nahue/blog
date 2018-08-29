@@ -2,6 +2,7 @@
 title: How to enable swapfile
 subTitle: Swap partition seems to be deprecating.
 category: "linux"
+cover: linux.png
 ---
 
 Please keep in mind that your swapfile size should be equal to your `RAM` amount.

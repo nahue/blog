@@ -61,7 +61,7 @@ const StackIcons = props => {
     { name: "algolia", url: "https://www.algolia.com/", comp: AlgoliaIcon },
     { name: "webpack", url: "https://webpack.js.org/", comp: WebpackIcon },
     { name: "babel", url: "https://babeljs.io/", comp: BabelIcon },
-    { name: "netlify", url: "https://www.netlify.com/", comp: NetlifyIcon }
+    //{ name: "netlify", url: "https://www.netlify.com/", comp: NetlifyIcon }
   ];
 
   return (

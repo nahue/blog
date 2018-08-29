@@ -2,6 +2,7 @@
 title: "Configure a Apache2 webserver"
 subTitle: "Create a webserver with SFTP and a user for a third-party"
 category: "linux"
+cover: apache2.png
 ---
 
 

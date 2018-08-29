@@ -2,6 +2,7 @@
 title: "AWS - Schedule EC2 Shutdown and Startup"
 subTitle: "This way we dont pay unused hours"
 category: 'aws'
+cover: ec2.png
 ---
 
 Go to the AWS dashboard, and enter the IAM module. Then you need to create the following policy under the name `ec2_start_stop_policy`.
