@@ -9,16 +9,16 @@
       "path---enable-swapfile-ae939117dae9742c8a96.js.map"
     ],
     "path---": [
-      "path----a0f333157e8fee1b2d59.js",
-      "path----a0f333157e8fee1b2d59.js.map"
+      "path----04a4b55b078ccd05bad5.js",
+      "path----04a4b55b078ccd05bad5.js.map"
     ],
     "component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-ddad76819fbc6643ede6.js",
-      "component---src-layouts-index-js-ddad76819fbc6643ede6.js.map"
+      "component---src-layouts-index-js-9595446158c4a43f500c.js",
+      "component---src-layouts-index-js-9595446158c4a43f500c.js.map"
     ],
     "path---index": [
       "path---index-206ac74de0d3aab26f03.js",
@@ -42,9 +42,13 @@
       "path---aws-ec-2-schedule-servers-5bc8850794c3ab5d3287.js",
       "path---aws-ec-2-schedule-servers-5bc8850794c3ab5d3287.js.map"
     ],
+    "path---aws-logs-the-devops-way": [
+      "path---aws-logs-the-devops-way-55a77b518b6f48d8fdcb.js",
+      "path---aws-logs-the-devops-way-55a77b518b6f48d8fdcb.js.map"
+    ],
     "component---src-templates-post-template-js": [
-      "component---src-templates-post-template-js-e6563881094f230b3bc7.js",
-      "component---src-templates-post-template-js-e6563881094f230b3bc7.js.map"
+      "component---src-templates-post-template-js-ed8d67a3af4a1979ded0.js",
+      "component---src-templates-post-template-js-ed8d67a3af4a1979ded0.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
@@ -55,9 +59,9 @@
       "path---attach-ebs-to-ec-2-instance-962bcd3ad8ad9620c300.js.map"
     ],
     "app": [
-      "app-ae97adbdc698552990a4.js",
+      "app-f854968cf0a225a7e608.js",
       "build-js-styles.css",
-      "app-ae97adbdc698552990a4.js.map",
+      "app-f854968cf0a225a7e608.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [

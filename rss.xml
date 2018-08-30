@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Nahuel - Not another devops!]]></title><description><![CDATA[PersonalBlog is a GatsbyJS starter.]]></description><link>https://nahue.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 29 Aug 2018 19:29:56 GMT</lastBuildDate><item><title><![CDATA[Configure a Apache2 webserver]]></title><description><![CDATA[Edit /etc/ssh/sshd_config Edit /etc/apache2/sites-enabled/000-default.conf]]></description><link>https://nahue.github.io/blog//configure-a-apache2-webserver/</link><guid isPermaLink="false">https://nahue.github.io/blog//configure-a-apache2-webserver/</guid><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Nahuel - Not another devops!]]></title><description><![CDATA[PersonalBlog is a GatsbyJS starter.]]></description><link>https://nahue.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 30 Aug 2018 00:51:25 GMT</lastBuildDate><item><title><![CDATA[Configure a Apache2 webserver]]></title><description><![CDATA[Edit /etc/ssh/sshd_config Edit /etc/apache2/sites-enabled/000-default.conf]]></description><link>https://nahue.github.io/blog//configure-a-apache2-webserver/</link><guid isPermaLink="false">https://nahue.github.io/blog//configure-a-apache2-webserver/</guid><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;
       &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo apt-get update
 sudo apt-get install language-pack-es apache2
 adduser --shell=/bin/false web
@@ -146,4 +146,29 @@ sudo mkswap /mnt/swapfile
 sudo swapon /mnt/swapfile
 echo &amp;quot;/mnt/swapfile swap swap defaults 0 0&amp;quot; | sudo tee -a /etc/fstab
 swapon -a&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;</content:encoded></item></channel></rss>
+      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[AWS - Checking out logs the devops way]]></title><description><![CDATA[I would like to tell you about a package i use a lot for checking out logs, let’s make something clear, the cloudwatch UI is not very…]]></description><link>https://nahue.github.io/blog//aws-logs-the-devops-way/</link><guid isPermaLink="false">https://nahue.github.io/blog//aws-logs-the-devops-way/</guid><content:encoded>&lt;p&gt;I would like to tell you about a package i use a lot for checking out logs, let’s make something clear, the cloudwatch UI is not very helpful for looking through logs searching for a error log.&lt;/p&gt;
+&lt;p&gt;This package is called &lt;a href=&quot;https://github.com/jorgebastida/awslogs&quot;&gt;awslogs&lt;/a&gt;, and you can install it very easily. Just type &lt;code class=&quot;language-text&quot;&gt;pip install awslogs&lt;/code&gt; and hit enter.&lt;/p&gt;
+&lt;p&gt;The only requirement is to have configured a IAM user with the following policy document:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token property&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:Describe*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:Get*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:List*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:TestMetricFilter&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:FilterLogEvents&quot;&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token property&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token property&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*&quot;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;And then is really simple.. just type something like &lt;code class=&quot;language-text&quot;&gt;awslogs get &amp;lt;loggroup&amp;gt; &amp;lt;stream&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For example let’s say you have a log group called &lt;code class=&quot;language-text&quot;&gt;app_logs&lt;/code&gt; and a stream called &lt;code class=&quot;language-text&quot;&gt;production/gateway&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You would have to run &lt;code class=&quot;language-text&quot;&gt;awslogs get app_logs production/gateway&lt;/code&gt;. Easy huh?. You will have a beautiful and easy to read output.&lt;/p&gt;
+&lt;p&gt;There’s ton of parameters you can set to filter out the output, but i will leave you to check their website.&lt;/p&gt;
+&lt;p&gt;And remember, as this is a open source project, please support them in any way you can.&lt;/p&gt;</content:encoded></item></channel></rss>
