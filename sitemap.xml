@@ -5,6 +5,7 @@
 <url> <loc>https://nahue.github.io/blog//attach-ebs-to-ec2-instance/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://nahue.github.io/blog//aws-ec2-schedule-servers/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://nahue.github.io/blog//enable-swapfile/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://nahue.github.io/blog//resize-lvm-volume/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://nahue.github.io/blog//aws-logs-the-devops-way/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://nahue.github.io/blog//</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://nahue.github.io/blog//search/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>

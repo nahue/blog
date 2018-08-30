@@ -1,4 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Nahuel - Not another devops!]]></title><description><![CDATA[PersonalBlog is a GatsbyJS starter.]]></description><link>https://nahue.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 30 Aug 2018 00:51:25 GMT</lastBuildDate><item><title><![CDATA[Configure a Apache2 webserver]]></title><description><![CDATA[Edit /etc/ssh/sshd_config Edit /etc/apache2/sites-enabled/000-default.conf]]></description><link>https://nahue.github.io/blog//configure-a-apache2-webserver/</link><guid isPermaLink="false">https://nahue.github.io/blog//configure-a-apache2-webserver/</guid><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Nahuel - Not another devops!]]></title><description><![CDATA[PersonalBlog is a GatsbyJS starter.]]></description><link>https://nahue.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 30 Aug 2018 13:17:02 GMT</lastBuildDate><item><title><![CDATA[Resize LVM Volume in Linux]]></title><description><![CDATA[There are a few requirements for this: Run   to find out the Volume Group you want to expand. (for ex:   ) Run   to find out the Logical…]]></description><link>https://nahue.github.io/blog//resize-lvm-volume/</link><guid isPermaLink="false">https://nahue.github.io/blog//resize-lvm-volume/</guid><content:encoded>&lt;p&gt;There are a few requirements for this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;vgdisplay&lt;/code&gt; to find out the Volume Group you want to expand. (for ex: &lt;code class=&quot;language-text&quot;&gt;VolGroup00&lt;/code&gt; )&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;lvdisplay&lt;/code&gt; to find out the Logical Volume you want to expand. (for ex: &lt;code class=&quot;language-text&quot;&gt;lv_home&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If your server has HotSwap capabilities or its a Virtual Machine, you can expand your storage without rebooting. Before continuing you should add a disk (for ex: a 500gb one).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If HotSwap: enter &lt;code class=&quot;language-text&quot;&gt;echo &amp;quot;- - -&amp;quot; &amp;gt; /sys/class/scsi_host/host0/scan&lt;/code&gt; to re-scan disks. Remember to replace &lt;code class=&quot;language-text&quot;&gt;host0&lt;/code&gt; for the correct SCSI port number.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;fdisk -l&lt;/code&gt; and detect the newly added disk, let’s say this is &lt;code class=&quot;language-text&quot;&gt;sdc&lt;/code&gt; from now on.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;fdisk /dev/sdc&lt;/code&gt;, then &lt;code class=&quot;language-text&quot;&gt;n&lt;/code&gt; for new partition, &lt;code class=&quot;language-text&quot;&gt;p&lt;/code&gt; for primary, then &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt; for creating the first primary partition. And finally, write changes with &lt;code class=&quot;language-text&quot;&gt;w&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create the filesystem with &lt;code class=&quot;language-text&quot;&gt;mkfs -t ext4 -c /dev/sdc1&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Enable LVM in the partition with &lt;code class=&quot;language-text&quot;&gt;pvcreate /dev/sdc1&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;vgextend VolGroup00 /dev/sdc1&lt;/code&gt; to add the disk to the Volume Group.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;lvextend -L+500G /dev/VolGroup00/lv_home&lt;/code&gt; to extend the Logical Volume.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally resize the file system with &lt;code class=&quot;language-text&quot;&gt;resize2fs /dev/VolGroup00/lv_home&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And now your home partition should be 500gb larger without rebooting. Easy huh?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AWS - Checking out logs the devops way]]></title><description><![CDATA[I would like to tell you about a package i use a lot for checking out logs, let’s make something clear, the cloudwatch UI is not very…]]></description><link>https://nahue.github.io/blog//aws-logs-the-devops-way/</link><guid isPermaLink="false">https://nahue.github.io/blog//aws-logs-the-devops-way/</guid><content:encoded>&lt;p&gt;I would like to tell you about a package i use a lot for checking out logs, let’s make something clear, the cloudwatch UI is not very helpful for looking through logs searching for a error log.&lt;/p&gt;
+&lt;p&gt;This package is called &lt;a href=&quot;https://github.com/jorgebastida/awslogs&quot;&gt;awslogs&lt;/a&gt;, and you can install it very easily. Just type &lt;code class=&quot;language-text&quot;&gt;pip install awslogs&lt;/code&gt; and hit enter.&lt;/p&gt;
+&lt;p&gt;The only requirement is to have configured a IAM user with the following policy document:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token property&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:Describe*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:Get*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:List*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:TestMetricFilter&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;token string&quot;&gt;&quot;logs:FilterLogEvents&quot;&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token property&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token property&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*&quot;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;And then is really simple.. just type something like &lt;code class=&quot;language-text&quot;&gt;awslogs get &amp;lt;loggroup&amp;gt; &amp;lt;stream&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For example let’s say you have a log group called &lt;code class=&quot;language-text&quot;&gt;app_logs&lt;/code&gt; and a stream called &lt;code class=&quot;language-text&quot;&gt;production/gateway&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You would have to run &lt;code class=&quot;language-text&quot;&gt;awslogs get app_logs production/gateway&lt;/code&gt;. Easy huh?. You will have a beautiful and easy to read output.&lt;/p&gt;
+&lt;p&gt;There’s ton of parameters you can set to filter out the output, but i will leave you to check their website.&lt;/p&gt;
+&lt;p&gt;And remember, as this is a open source project, please support them in any way you can.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Configure a Apache2 webserver]]></title><description><![CDATA[Edit /etc/ssh/sshd_config Edit /etc/apache2/sites-enabled/000-default.conf]]></description><link>https://nahue.github.io/blog//configure-a-apache2-webserver/</link><guid isPermaLink="false">https://nahue.github.io/blog//configure-a-apache2-webserver/</guid><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;
       &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo apt-get update
 sudo apt-get install language-pack-es apache2
 adduser --shell=/bin/false web
@@ -146,29 +207,4 @@ sudo mkswap /mnt/swapfile
 sudo swapon /mnt/swapfile
 echo &amp;quot;/mnt/swapfile swap swap defaults 0 0&amp;quot; | sudo tee -a /etc/fstab
 swapon -a&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[AWS - Checking out logs the devops way]]></title><description><![CDATA[I would like to tell you about a package i use a lot for checking out logs, let’s make something clear, the cloudwatch UI is not very…]]></description><link>https://nahue.github.io/blog//aws-logs-the-devops-way/</link><guid isPermaLink="false">https://nahue.github.io/blog//aws-logs-the-devops-way/</guid><content:encoded>&lt;p&gt;I would like to tell you about a package i use a lot for checking out logs, let’s make something clear, the cloudwatch UI is not very helpful for looking through logs searching for a error log.&lt;/p&gt;
-&lt;p&gt;This package is called &lt;a href=&quot;https://github.com/jorgebastida/awslogs&quot;&gt;awslogs&lt;/a&gt;, and you can install it very easily. Just type &lt;code class=&quot;language-text&quot;&gt;pip install awslogs&lt;/code&gt; and hit enter.&lt;/p&gt;
-&lt;p&gt;The only requirement is to have configured a IAM user with the following policy document:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
-      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
-                &lt;span class=&quot;token string&quot;&gt;&quot;logs:Describe*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token string&quot;&gt;&quot;logs:Get*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token string&quot;&gt;&quot;logs:List*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token string&quot;&gt;&quot;logs:TestMetricFilter&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token string&quot;&gt;&quot;logs:FilterLogEvents&quot;&lt;/span&gt;
-            &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*&quot;&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;
-&lt;p&gt;And then is really simple.. just type something like &lt;code class=&quot;language-text&quot;&gt;awslogs get &amp;lt;loggroup&amp;gt; &amp;lt;stream&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;For example let’s say you have a log group called &lt;code class=&quot;language-text&quot;&gt;app_logs&lt;/code&gt; and a stream called &lt;code class=&quot;language-text&quot;&gt;production/gateway&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;You would have to run &lt;code class=&quot;language-text&quot;&gt;awslogs get app_logs production/gateway&lt;/code&gt;. Easy huh?. You will have a beautiful and easy to read output.&lt;/p&gt;
-&lt;p&gt;There’s ton of parameters you can set to filter out the output, but i will leave you to check their website.&lt;/p&gt;
-&lt;p&gt;And remember, as this is a open source project, please support them in any way you can.&lt;/p&gt;</content:encoded></item></channel></rss>
+      &lt;/div&gt;</content:encoded></item></channel></rss>
