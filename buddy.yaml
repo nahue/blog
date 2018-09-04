@@ -1,0 +1,20 @@
+- pipeline: "Publish site"
+  trigger_mode: "ON_EVERY_PUSH"
+  ref_name: "dev"
+  ref_type: "BRANCH"
+  actions:
+  - action: "Execute: npm install"
+    type: "BUILD"
+    working_directory: "/buddy/nahue-github-io"
+    docker_image_name: "library/node"
+    docker_image_tag: "10.9.0"
+    execute_commands:
+    - "npm install"
+    - "npm run deploy"
+    #- "gh-pages -d public -b master -r git@github.com:nahue/nahue.github.io.git"
+    setup_commands:
+    - " apt-get update && apt install -y make gcc g++ libc-dev libpng-dev"
+    #- " npm install -g gh-pages"
+    mount_filesystem_path: "/buddy/nahue-github-io"
+    shell: "BASH"
+    trigger_condition: "ALWAYS"
