@@ -19,7 +19,11 @@ Tools like [Consul](https://www.consul.io/) are here to help us with this issue,
 
 ## Install Consul
 
-We will use Docker since it's the easiest way, just run `docker run -p 8500:8500 --name consul -d consul`
+We will use Docker since it's the easiest way, just run 
+
+```bash
+docker run -p 8500:8500 --name consul -d consul
+```
 
 
 ## Create a Microservice with Micronaut
@@ -32,7 +36,13 @@ To create a project run `mn create-app microservice1`.
 
 #### Enable consul registration
 
-Open up your `build.grade` file and insert `compile "io.micronaut:discovery-client"` inside the `dependencies` block.
+Open up your `build.grade` file and insert 
+
+```
+compile "io.micronaut:discovery-client"
+```
+
+inside the `dependencies` block.
 
 Add the following configuration to your `application.yaml`
 
